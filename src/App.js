@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import {Person} from './components/Person/index';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    Person: [
+      {
+        id: 1,
+        fullName: "Khaled Ahmed",
+        bio: "Hello Geeks!",
+        imgSrc: "",
+        profession: "Frontend Engineer",
+        isShow: true,
+      }
+    ]
+  }
+
+  
+  render() {
+    const showImage = () => {
+      if (this.state.Person.isShow) {
+          console.log("ShowImage")
+      } else {
+          console.log("Not Found")
+      }
+  }
+  
+    return (
+      <div className="App">
+        <Person  person={this.state.Person} showImage= {showImage}/>
+      </div>
+    );
+
+  }
 }
 
 export default App;
